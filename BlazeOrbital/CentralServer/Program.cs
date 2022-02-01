@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using BlazeOrbital.CentralServer.Data;
 using BlazeOrbital.Data;
+using BlazeOrbital.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,9 +25,12 @@ builder.Services
     .AddAuthentication()
     .AddIdentityServerJwt();
 
+builder.Services.AddHostedService<FeedSyncService>();
 builder.Services.AddGrpc();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+
 
 var app = builder.Build();
 SeedData.EnsureSeeded(app.Services);
