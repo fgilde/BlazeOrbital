@@ -3,7 +3,7 @@ option csharp_namespace = "BlazeOrbital.Data";
 
 service ManufacturingData { 
 	rpc GetDashboardData (DashboardRequest) returns (DashboardReply);
-	rpc GetParts (PartsRequest) returns (PartsReply); 
+	rpc GetProducts (ProductsRequest) returns (ProductsReply); 
 }
 
 message DashboardRequest {}
@@ -16,23 +16,32 @@ message DashboardReply {
 	int32 machinesStopped = 6;
 }
 
-message PartsRequest {
+message ProductsRequest {
 	int64 modifiedSinceTicks = 1;
 	int32 maxCount = 2;
 }
 
-message PartsReply {
-	repeated Part parts = 1;
+message ProductsReply {
+	repeated Product products = 1;
 	int32 modifiedCount = 2;
 }
 
-message Part {
-	int32 partId = 1;
+message Product {
+	string id = 1;
 	int64 modifiedTicks = 2;
 	string category = 3;
 	string subcategory = 4;
 	string name = 5;
 	string location = 6;
-	int32 stock = 7;
-	int64 priceCents = 8;
+	string image = 7;
+	string brand = 8;
+	string targetUrl = 9;
+	string thumbnail = 10;
+	string product = 11;
+	string salePercentage = 12;
+	string price = 13;
+	string salePrice = 14;
+	string shop = 15;
+	int64 dateCreated = 16;
+	int64 dateUpdated = 17;
 }

@@ -25,7 +25,8 @@ builder.Services.AddManufacturingDataClient((services, options) =>
     authEnabledHandler.InnerHandler = new HttpClientHandler();
 
     options.BaseUri = backendOrigin;
-    options.MessageHandler = authEnabledHandler;
+    //options.MessageHandler = authEnabledHandler; // with auth
+    options.MessageHandler = authEnabledHandler.InnerHandler; // No auth
 });
 
 // Supplies an IAuthorizationStateProvider service that lets other components know about auth state

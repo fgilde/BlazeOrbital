@@ -1,11 +1,10 @@
 ﻿using BlazeOrbital.CentralServer.Data;
 using Grpc.Core;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlazeOrbital.Data;
 
-[Authorize]
+//[Authorize]
 public class ManufacturingDataService : ManufacturingData.ManufacturingDataBase
 {
     private readonly ApplicationDbContext db;
@@ -28,15 +27,15 @@ public class ManufacturingDataService : ManufacturingData.ManufacturingDataBase
         });
     }
 
-    public override async Task<PartsReply> GetParts(PartsRequest request, ServerCallContext context)
+    public override async Task<ProductsReply> GetProducts(ProductsRequest request, ServerCallContext context)
     {
-        var modifiedParts = db.Parts
+        var modifiedParts = db.Products
             .OrderBy(p => p.ModifiedTicks)
             .Where(p => p.ModifiedTicks > request.ModifiedSinceTicks);
-
-        var reply = new PartsReply();
+         //
+        var reply = new ProductsReply();
         reply.ModifiedCount = await modifiedParts.CountAsync();
-        reply.Parts.AddRange(await modifiedParts.Take(request.MaxCount).ToListAsync());
+        reply.Products.AddRange(await modifiedParts.Take(request.MaxCount).ToListAsync());
         return reply;
     }
 }

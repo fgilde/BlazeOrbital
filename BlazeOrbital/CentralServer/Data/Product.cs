@@ -1,0 +1,16 @@
+﻿namespace BlazeOrbital.Data;
+
+public partial class Product
+{
+    public DateTime Created
+    {
+        get => new(DateCreated);
+        set => DateCreated = value.Ticks;
+    }
+
+    public DateTime Updated
+    {
+        get => new(DateUpdated);
+        set => DateUpdated = value.Ticks;
+    }
+}

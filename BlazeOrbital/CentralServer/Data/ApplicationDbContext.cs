@@ -18,9 +18,12 @@ public class ApplicationDbContext : ApiAuthorizationDbContext<IdentityUser>
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-        builder.Entity<Part>().HasIndex(nameof(Part.ModifiedTicks), nameof(Part.PartId));
+        builder.Entity<Product>().HasKey(nameof(Product.Id));
+        builder.Entity<Product>().HasIndex(nameof(Product.ModifiedTicks), nameof(Product.Id));
+        builder.Entity<Product>().Ignore(p => p.Created);
+        builder.Entity<Product>().Ignore(p => p.Updated);
     }
 
     // Inventory
-    public DbSet<Part> Parts { get; set; } = default!;
+    public DbSet<Product> Products { get; set; } = default!;
 }

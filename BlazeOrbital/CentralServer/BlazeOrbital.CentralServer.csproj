@@ -26,12 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Data\parts.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Services\" />
   </ItemGroup>
 
