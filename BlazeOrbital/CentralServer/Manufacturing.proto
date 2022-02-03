@@ -17,7 +17,7 @@ message DashboardReply {
 }
 
 message ProductsRequest {
-	int64 modifiedSinceTicks = 1;
+	int64 modifiedSince = 1;
 	int32 maxCount = 2;
 }
 

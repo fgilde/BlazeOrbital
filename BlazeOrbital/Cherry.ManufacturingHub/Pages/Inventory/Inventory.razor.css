@@ -37,6 +37,10 @@
     text-overflow: ellipsis;
 }
 
+::deep .col-image {
+    width: 160px;
+}
+
 ::deep .col-category {
     width: max(20vw, 9rem);
     text-overflow: ellipsis;

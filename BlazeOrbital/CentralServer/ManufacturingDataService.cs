@@ -31,7 +31,7 @@ public class ManufacturingDataService : ManufacturingData.ManufacturingDataBase
     {
         var modifiedParts = db.Products
             .OrderBy(p => p.DateUpdated)
-            .Where(p => p.DateUpdated > request.ModifiedSinceTicks);
+            .Where(p => p.DateUpdated > request.ModifiedSince);
          //
         var reply = new ProductsReply();
         reply.ModifiedCount = await modifiedParts.CountAsync();

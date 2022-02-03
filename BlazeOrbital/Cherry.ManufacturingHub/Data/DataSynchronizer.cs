@@ -47,7 +47,7 @@ class DataSynchronizer
 
 
         await using var db = await dbContextFactory.CreateDbContextAsync();
-        await db.Database.EnsureDeletedAsync();
+    //    await db.Database.EnsureDeletedAsync();
         await db.Database.EnsureCreatedAsync();
     }
 
@@ -77,7 +77,7 @@ class DataSynchronizer
 
             while (true)
             {
-                var request = new ProductsRequest { MaxCount = 5000, ModifiedSinceTicks = mostRecentUpdate ?? -1 };
+                var request = new ProductsRequest { MaxCount = 5000, ModifiedSince = mostRecentUpdate ?? -1 };
                 var response = await manufacturingData.GetProductsAsync(request);
                 var syncRemaining = response.ModifiedCount - response.Products.Count;
 

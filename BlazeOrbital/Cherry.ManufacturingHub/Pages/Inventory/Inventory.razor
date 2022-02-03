@@ -1,6 +1,7 @@
 ﻿@page "/inventory"
 @using Microsoft.EntityFrameworkCore
 @inject DataSynchronizer DataSynchronizer
+@inject NavigationManager navigationManager
 @implements IDisposable
 @*@attribute [Authorize]*@
 <PageTitle>Inventory</PageTitle>
@@ -10,10 +11,19 @@
 @if (db is not null)
 {
     <div class="inventory-grid">
-        <Grid Virtualize="true" Items="@GetFilteredParts()" ItemKey="@(x => x.Id)" ItemSize="35">
+        <Grid Virtualize="true" Items="@GetFilteredParts()" ItemKey="@(x => x.Id)" ItemSize="150">
+            
+            <TemplateColumn Title="Image" Class="col-image">
+                <ChildContent>
+                    <div style="height: 150px;" >
+                        <img src="@(context.Thumbnail)"/>
+                    </div>
+                </ChildContent>
+            </TemplateColumn>
+
 
             <TemplateColumn Title="Category" SortBy="@(items => items.SortByAscending(x => x.Category).ThenAscending(x => x.Subcategory))" Class="col-category">
-                <ChildContent>@context.Category / @context.Subcategory</ChildContent>
+                <ChildContent>@context.Subcategory</ChildContent>
                 <ColumnOptions>
                     <p>Category (@categories.Length)</p>
                     <select multiple class="w-64 bg-gray-100 border-grey-500 border my-4" @bind="categories" @onclick="@(() => subcategories = Array.Empty<string>())">
@@ -41,7 +51,7 @@
                 </ColumnOptions>
             </PropertyColumn>
 
-            <PropertyColumn Title="Location" Property="@(x => x.Location)" Class="col-location" />
+            <PropertyColumn Title="Url" Property="@(x => x.TargetUrl)" OnCellClicked="@((Product part) => NavigateTo(part.TargetUrl))" Class="col-location" />
 
           @*  <PropertyColumn Title="Stock" Property="@(x => x.Stock)" Format="N0" Align="Align.Right" Class="col-stock">
                 <ColumnOptions>
@@ -120,4 +130,10 @@
         db?.Dispose();
         DataSynchronizer.OnUpdate -= StateHasChanged;
     }
+
+    private void NavigateTo(string url)
+    {
+        navigationManager.NavigateTo(url, true);
+    }
+
 }
