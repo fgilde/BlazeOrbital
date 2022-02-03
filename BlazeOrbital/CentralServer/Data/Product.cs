@@ -1,4 +1,4 @@
-﻿namespace BlazeOrbital.Data;
+namespace Cherry.Data;
 
 public partial class Product
 {

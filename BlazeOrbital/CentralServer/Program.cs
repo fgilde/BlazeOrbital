@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using BlazeOrbital.CentralServer.Data;
-using BlazeOrbital.Data;
-using BlazeOrbital.Data.Services;
+using Cherry.CentralServer.Data;
+using Cherry.Data;
+using Cherry.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

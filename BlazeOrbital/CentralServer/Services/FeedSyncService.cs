@@ -1,8 +1,8 @@
-﻿using System.Globalization;
-using BlazeOrbital.CentralServer.Data;
+using System.Globalization;
+using Cherry.CentralServer.Data;
 using CsvHelper;
 
-namespace BlazeOrbital.Data.Services;
+namespace Cherry.Data.Services;
 
 public class FeedSyncService : BackgroundService
 {
@@ -69,10 +69,15 @@ public class FeedSyncService : BackgroundService
         var productInDb = db.Products.FirstOrDefault(x => x.Id == product.Id);
         if (productInDb != null)
         {
-            // Update
-            product.Updated = DateTime.UtcNow;
-            product.Created = productInDb.Created;
-            db.Entry(productInDb).CurrentValues.SetValues(product);
+            var created = productInDb.Created;
+            productInDb.Created = productInDb.Updated = default;
+            if (!productInDb.Equals(product)) 
+            {
+                // Update
+                product.Updated = DateTime.UtcNow;
+                product.Created = created;
+                db.Entry(productInDb).CurrentValues.SetValues(product);
+            }
         }
         else
         {

@@ -1,8 +1,8 @@
-﻿using BlazeOrbital.CentralServer.Data;
+using Cherry.CentralServer.Data;
 using Grpc.Core;
 using Microsoft.EntityFrameworkCore;
 
-namespace BlazeOrbital.Data;
+namespace Cherry.Data;
 
 //[Authorize]
 public class ManufacturingDataService : ManufacturingData.ManufacturingDataBase
@@ -30,8 +30,8 @@ public class ManufacturingDataService : ManufacturingData.ManufacturingDataBase
     public override async Task<ProductsReply> GetProducts(ProductsRequest request, ServerCallContext context)
     {
         var modifiedParts = db.Products
-            .OrderBy(p => p.ModifiedTicks)
-            .Where(p => p.ModifiedTicks > request.ModifiedSinceTicks);
+            .OrderBy(p => p.DateUpdated)
+            .Where(p => p.DateUpdated > request.ModifiedSinceTicks);
          //
         var reply = new ProductsReply();
         reply.ModifiedCount = await modifiedParts.CountAsync();

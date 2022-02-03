@@ -1,5 +1,5 @@
 ﻿syntax = "proto3"; 
-option csharp_namespace = "BlazeOrbital.Data";
+option csharp_namespace = "Cherry.Data";
 
 service ManufacturingData { 
 	rpc GetDashboardData (DashboardRequest) returns (DashboardReply);

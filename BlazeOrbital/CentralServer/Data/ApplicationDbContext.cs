@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
+using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Duende.IdentityServer.EntityFramework.Options;
 using Microsoft.AspNetCore.Identity;
-using BlazeOrbital.Data;
+using Cherry.Data;
 
-namespace BlazeOrbital.CentralServer.Data;
+namespace Cherry.CentralServer.Data;
 
 public class ApplicationDbContext : ApiAuthorizationDbContext<IdentityUser>
 {

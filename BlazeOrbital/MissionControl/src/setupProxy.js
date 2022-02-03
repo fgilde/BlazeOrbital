@@ -17,7 +17,7 @@ const context =  [
   "/dbstorage.js",
   "/ManufacturingData",
   "/app.css",
-  "/BlazeOrbital.ManufacturingHub.styles.css",
+  "/Cherry.ManufacturingHub.styles.css",
   "/appsettings.json",
 ];
 

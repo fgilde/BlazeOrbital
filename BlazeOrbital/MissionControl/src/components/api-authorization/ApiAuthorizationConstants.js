@@ -1,4 +1,4 @@
-export const ApplicationName = 'BlazeOrbital.MissionControl';
+export const ApplicationName = 'Cherry.MissionControl';
 
 export const QueryParameterNames = {
   ReturnUrl: 'returnUrl',

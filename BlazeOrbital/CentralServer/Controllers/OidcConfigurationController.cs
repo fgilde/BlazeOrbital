@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
+using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BlazeOrbital.CentralServer.Controllers;
+namespace Cherry.CentralServer.Controllers;
 
 public class OidcConfigurationController : Controller
 {

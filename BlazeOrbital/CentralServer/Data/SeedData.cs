@@ -1,8 +1,8 @@
-﻿using BlazeOrbital.Data;
+using Cherry.Data;
 using CsvHelper;
 using System.Globalization;
 
-namespace BlazeOrbital.CentralServer.Data;
+namespace Cherry.CentralServer.Data;
 
 public static class SeedData
 {
