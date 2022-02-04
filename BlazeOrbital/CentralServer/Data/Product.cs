@@ -2,6 +2,14 @@ namespace Cherry.Data;
 
 public partial class Product
 {
+    public bool NeedsUpdate(Product other)
+    {
+        var clonedSelf = Clone();
+        var clonedOther = other.Clone();
+        clonedOther.DateUpdated = clonedOther.DateCreated = clonedSelf.DateCreated = clonedSelf.DateUpdated = default;
+        return !clonedSelf.Equals(clonedOther);
+    }
+
     public DateTime Created
     {
         get => new(DateCreated);

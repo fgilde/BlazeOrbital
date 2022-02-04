@@ -69,20 +69,15 @@ public class FeedSyncService : BackgroundService
         var productInDb = db.Products.FirstOrDefault(x => x.Id == product.Id);
         if (productInDb != null)
         {
-            var created = productInDb.Created;
-            productInDb.Created = productInDb.Updated = default;
-            if (!productInDb.Equals(product)) 
+            if (productInDb.NeedsUpdate(product)) 
             {
                 // Update
-                product.Updated = DateTime.UtcNow;
-                product.Created = created;
+                product.DateUpdated = DateTime.UtcNow.Ticks;
                 db.Entry(productInDb).CurrentValues.SetValues(product);
             }
         }
         else
         {
-            product.Updated = DateTime.UtcNow;
-            product.Created = DateTime.UtcNow;
             db.Products.Add(product);
         }
     }
@@ -104,7 +99,9 @@ public class FeedSyncService : BackgroundService
             Price = csv.GetField<string>(9),
             SalePrice = csv.GetField<string>(10),
             Shop = csv.GetField<string>(11),
-            Subcategory = csv.GetField<string>(12)
+            Subcategory = csv.GetField<string>(12),
+            DateUpdated = DateTime.UtcNow.Ticks,
+            DateCreated = DateTime.UtcNow.Ticks
         };
     }
 
