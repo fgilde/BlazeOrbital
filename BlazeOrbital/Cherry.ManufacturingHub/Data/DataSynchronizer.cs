@@ -47,7 +47,7 @@ class DataSynchronizer
 
 
         await using var db = await dbContextFactory.CreateDbContextAsync();
-    //    await db.Database.EnsureDeletedAsync();
+       // db.Database.EnsureDeleted();
         await db.Database.EnsureCreatedAsync();
     }
 

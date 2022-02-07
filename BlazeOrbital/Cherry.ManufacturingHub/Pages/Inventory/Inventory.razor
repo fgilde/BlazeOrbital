@@ -1,5 +1,7 @@
 ﻿@page "/inventory"
 @using Microsoft.EntityFrameworkCore
+@using Cherry.ManufacturingHub.Extensions
+@using System.Globalization
 @inject DataSynchronizer DataSynchronizer
 @inject NavigationManager navigationManager
 @implements IDisposable
@@ -51,18 +53,18 @@
                 </ColumnOptions>
             </PropertyColumn>
 
-            <PropertyColumn Title="Url" Property="@(x => x.TargetUrl)" OnCellClicked="@((Product part) => NavigateTo(part.TargetUrl))" Class="col-location" />
+            <PropertyColumn Title="Shop" Property="@(x => x.Shop)" OnCellClicked="@((Product part) => NavigateTo(part.TargetUrl))" Class="col-location" />
 
-          @*  <PropertyColumn Title="Stock" Property="@(x => x.Stock)" Format="N0" Align="Align.Right" Class="col-stock">
+            <PropertyColumn Title="Price" Property="@(x => x.SalePrice)" Align="Align.Right" Class="col-stock">
                 <ColumnOptions>
                     <p>Min stock</p>
                     <input type="range" @bind="minStock" @bind:event="oninput" min="0" max="50000" />
                     <p>Max stock</p>
                     <input type="range" @bind="maxStock" @bind:event="oninput" min="0" max="50000" />
                 </ColumnOptions>
-            </PropertyColumn>*@
+            </PropertyColumn>
 
-           @* <PropertyColumn Title="Cost ($)" Property="@(x => x.PriceCents/100)" Format="N0" Align="Align.Right" Class="col-cost" />*@
+            @*<PropertyColumn Title="Cost (€)" Property="@(x => x.SalePrice)" Format="N0" Align="Align.Right" Class="col-cost" />*@
 
         </Grid>
         <div class="status-bar">
@@ -102,14 +104,14 @@
         {
             result = result.Where(x => EF.Functions.Like(x.Name, searchName.Replace("%", "\\%") + "%", "\\"));
         }
-        //if (minStock > 0)
-        //{
-        //    result = result.Where(x => x.Stock >= minStock);
-        //}
-        //if (maxStock < 50000)
-        //{
-        //    result = result.Where(x => x.Stock <= maxStock);
-        //}
+        if (minStock > 0)
+        {
+            result = result.Where(x => Convert.ToDecimal(x.SalePrice, NumberFormatInfo.CurrentInfo) >= minStock);
+        }
+        if (maxStock < 50000)
+        {
+            result = result.Where(x => x.SalePrice.ParsePrice() <= maxStock);
+        }
 
         return result;
     }

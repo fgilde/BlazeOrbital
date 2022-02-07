@@ -13,13 +13,15 @@
                     <div class="w-36 h-36 mb-4">
                         <QRCode Value="@Part.Url" />
                     </div>
+                    <img src="@Part.Image"/>
 
                     <p class="text-gray-500 my-2">@Part.Category ▸ @Part.Subcategory</p>
                     <p class="text-3xl font-bold my-2">@Part.Name</p>
                     @*<p class="text-gray-500 my-4">Unit cost: $@((Part.PriceCents / 100.0).ToString("N2"))</p>*@
-                    <p class="text-gray-500 my-4">cost: $@((Part.Price))</p>
+                    <p class="text-gray-500 my-4">Price: @Part.Price</p>
 
-                    <p class="bg-black text-xl text-white px-5 py-1 font-bold inline-block mt-3">Location: @Part.Location</p>
+                    <p class="bg-black text-xl text-white px-5 py-1 font-bold inline-block mt-3">Shop: @Part.Shop</p>
+                    <a href="@(Part.TargetUrl)">Buy now</a>
                 </div>
             </section>
         </div>

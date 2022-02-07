@@ -1,4 +1,5 @@
 ﻿@page
+@inject IConfiguration configuration;
 
 <!DOCTYPE html>
 <html>
@@ -10,10 +11,10 @@
 <body>
     <h1>Central Server</h1>
     <p>The server is running. To continue, start one of the client apps.</p>
-    <ul>
-        <li><a href='https://localhost:7070/'>Manufacturing Hub</a></li>
-        <li><a href='https://localhost:44423/'>Mission Control</a></li>
-    </ul>
+<ul>
+    <li><a href='@configuration["Apps:Client:Origin"]'>Main Client</a></li>
+    <li><a href='@configuration["Apps:MissionControl:Origin"]'>Mission Control</a></li>
+</ul>
 </body>
 
 </html>

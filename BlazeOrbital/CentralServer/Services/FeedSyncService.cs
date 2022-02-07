@@ -1,5 +1,6 @@
 using System.Globalization;
 using Cherry.CentralServer.Data;
+using Cherry.Data.Extensions;
 using CsvHelper;
 
 namespace Cherry.Data.Services;
@@ -96,6 +97,8 @@ public class FeedSyncService : BackgroundService
             Category = csv.GetField<string>(6),
             Product_ = csv.GetField<string>(7),
             SalePercentage = csv.GetField<string>(8),
+            //Price = decimal.ToDouble(csv.GetField<string>(9).ParsePrice()),
+            //SalePrice = decimal.ToDouble(csv.GetField<string>(10).ParsePrice()),
             Price = csv.GetField<string>(9),
             SalePrice = csv.GetField<string>(10),
             Shop = csv.GetField<string>(11),

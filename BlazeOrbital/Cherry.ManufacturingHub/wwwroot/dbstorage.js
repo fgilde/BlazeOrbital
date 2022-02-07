@@ -1,5 +1,6 @@
 ﻿export function synchronizeFileWithIndexedDb(filename) {
     return new Promise((res, rej) => {
+        //window.indexedDB.deleteDatabase('SqliteStorage');
         const db = window.indexedDB.open('SqliteStorage', 1);
         db.onupgradeneeded = () => {
             db.result.createObjectStore('Files', { keypath: 'id' });

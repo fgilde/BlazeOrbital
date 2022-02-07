@@ -25,7 +25,7 @@ builder.Services.AddManufacturingDataClient((services, options) =>
     authEnabledHandler.InnerHandler = new HttpClientHandler();
 
     options.BaseUri = backendOrigin;
-    //options.MessageHandler = authEnabledHandler; // with auth
+    //options.MessageHandler = authEnabledHandler; // with auth // TODO:
     options.MessageHandler = authEnabledHandler.InnerHandler; // No auth
 });
 

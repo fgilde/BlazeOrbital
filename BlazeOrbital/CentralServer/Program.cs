@@ -37,7 +37,7 @@ SeedData.EnsureSeeded(app.Services);
 
 // Allow requests from the external ManufacturingHub and  MissionControl applications
 app.UseCors(cors => 
-    //cors.WithOrigins(builder.Configuration["Apps:ManufacturingHub:Origin"], builder.Configuration["Apps:MissionControl:Origin"])
+    //cors.WithOrigins(builder.Configuration["Apps:Client:Origin"], builder.Configuration["Apps:MissionControl:Origin"])
         cors.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
     );
 
