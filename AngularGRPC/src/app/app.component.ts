@@ -21,10 +21,10 @@ export class AppComponent implements OnInit {
     request.setMaxcount(30700);
     request.setModifiedsince(-1);
 
-/*
+
     grpc.unary(ManufacturingData.GetProducts, {
       request: request,
-      host: "https://demogrpcweblinux.azurewebsites.net", //https://grpcwebdemo.azurewebsites.net (Windows App Service)
+      host: "https://localhost:7087",
       onEnd: res => {
         const { status, statusMessage, headers, message, trailers } = res;
         if (status === grpc.Code.OK && message) {
@@ -37,28 +37,28 @@ export class AppComponent implements OnInit {
         }
       }
     });
-    */
+    
 
-    grpc.invoke(ManufacturingData.GetProducts, {
-      request: request,
-      host: "https://localhost:7087",
-      onMessage: (message: ProductsReply) => {
-        var result = message.toObject() as ProductsReply.AsObject;
-        console.log("one downloaded")
+    // grpc.invoke(ManufacturingData.GetProducts, {
+    //   request: request,
+    //   host: "https://localhost:7087",
+    //   onMessage: (message: ProductsReply) => {
+    //     var result = message.toObject() as ProductsReply.AsObject;
+    //     console.log("one downloaded")
 
-        this.products = result.productsList.map(p => 
-          <ProductModel>({
-            name: p.name,
-            shop: p.shop
-          }));
-      },
-      onEnd: (code: grpc.Code, msg: string | undefined, trailers: grpc.Metadata) => {
-        if (code == grpc.Code.OK) {
-          console.log("all downloaded")
-        } else {
-          console.log("hit an error", code, msg, trailers);
-        }
-      }
-    });
+    //     this.products = result.productsList.map(p => 
+    //       <ProductModel>({
+    //         name: p.name,
+    //         shop: p.shop
+    //       }));
+    //   },
+    //   onEnd: (code: grpc.Code, msg: string | undefined, trailers: grpc.Metadata) => {
+    //     if (code == grpc.Code.OK) {
+    //       console.log("all downloaded")
+    //     } else {
+    //       console.log("hit an error", code, msg, trailers);
+    //     }
+    //   }
+    // });
   }
 }
