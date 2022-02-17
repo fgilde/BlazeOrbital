@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
@@ -26,6 +26,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cherry.ManufacturingHub\Cherry.ManufacturingHub.csproj" />
+    <ProjectReference Include="..\Cherry.ManufacturingHub\Cherry.Client.csproj" />
   </ItemGroup>
 </Project>

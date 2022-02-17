@@ -1,6 +1,6 @@
 {
-  "name": "Cherry Manufacturing",
-  "short_name": "Manufacturing Hub",
+  "name": "Cherry Client",
+  "short_name": "Cherry",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#c0c0c0",

@@ -2,6 +2,7 @@ using Cherry.CentralServer.Data;
 using Grpc.Core;
 using Microsoft.EntityFrameworkCore;
 
+// Dont change this namespace it will be partial on client generator
 namespace Cherry.Data;
 
 //[Authorize]

@@ -1,9 +1,9 @@
+using Cherry.Client.Data;
+using Cherry.Client.Layout;
+using Cherry.Client.Pages.Inventory;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Cherry.ManufacturingHub.Data;
-using Cherry.ManufacturingHub.Layout;
-using Cherry.ManufacturingHub.Pages.Inventory;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
@@ -32,7 +32,7 @@ builder.Services.AddDataClient((services, options) =>
 
 // Supplies an IAuthorizationStateProvider service that lets other components know about auth state
 // This one gets that state by asking the OpenID Connect client. Also we cache the state for offline use.
-builder.Services.AddApiAuthorization(c => c.ProviderOptions.ConfigurationEndpoint = $"{backendOrigin}/_configuration/Cherry.ManufacturingHub");
+builder.Services.AddApiAuthorization(c => c.ProviderOptions.ConfigurationEndpoint = $"{backendOrigin}/_configuration/Cherry.Client");
 builder.Services.AddScoped<AccountClaimsPrincipalFactory<RemoteUserAccount>, OfflineAccountClaimsPrincipalFactory>();
 
 // Sets up EF Core with Sqlite

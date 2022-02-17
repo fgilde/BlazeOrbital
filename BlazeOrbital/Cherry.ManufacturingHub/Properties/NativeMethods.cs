@@ -1,7 +1,7 @@
-using SQLitePCL;
 using System.Runtime.InteropServices;
+using SQLitePCL;
 
-namespace Cherry.ManufacturingHub;
+namespace Cherry.Client.Properties;
 
 // As an alternative to declaring all this stuff manually, you could add to your project:
 //   <PackageReference Include="SQLitePCLRaw.Bundle_e_sqlite3" Version="2.0.6" />

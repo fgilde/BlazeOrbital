@@ -1,4 +1,4 @@
-using Cherry.ManufacturingHub.Data;
+using Cherry.Client.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.Extensions.DependencyInjection;

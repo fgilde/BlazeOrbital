@@ -2,15 +2,15 @@ using Grpc.Net.Client;
 using Grpc.Net.Client.Web;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cherry.ManufacturingHub.Data;
+namespace Cherry.Client.Data;
 
 public static class DataServices
 {
-    public static void AddDataClient(this IServiceCollection serviceCollection, Action<IServiceProvider, ManufacturingDataClientOptions> configure)
+    public static void AddDataClient(this IServiceCollection serviceCollection, Action<IServiceProvider, CherryDataClientOptions> configure)
     {
         serviceCollection.AddScoped(services =>
         {
-            var options = new ManufacturingDataClientOptions();
+            var options = new CherryDataClientOptions();
             configure(services, options);
             var httpClient = new HttpClient(new GrpcWebHandler(GrpcWebMode.GrpcWeb, options.MessageHandler!));
             var channel = GrpcChannel.ForAddress(options.BaseUri!, new GrpcChannelOptions { HttpClient = httpClient, MaxReceiveMessageSize = null });
@@ -26,7 +26,7 @@ public static class DataServices
     }
 }
 
-public class ManufacturingDataClientOptions
+public class CherryDataClientOptions
 {
     public string? BaseUri { get; set; }
     public HttpMessageHandler? MessageHandler { get; set; }

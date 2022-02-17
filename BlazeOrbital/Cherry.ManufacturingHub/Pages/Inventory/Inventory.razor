@@ -1,7 +1,10 @@
 ﻿@page "/inventory"
 @using Microsoft.EntityFrameworkCore
-@using Cherry.ManufacturingHub.Extensions
+
 @using System.Globalization
+@using System.Linq
+@using Cherry.Client.Data
+
 @inject DataSynchronizer DataSynchronizer
 @inject NavigationManager navigationManager
 @implements IDisposable
@@ -110,7 +113,7 @@
         }
         if (maxStock < 50000)
         {
-            result = result.Where(x => x.SalePrice.ParsePrice() <= maxStock);
+           // result = result.Where(x => x.SalePrice.ParsePrice() <= maxStock);
         }
 
         return result;

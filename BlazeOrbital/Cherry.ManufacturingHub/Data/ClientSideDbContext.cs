@@ -1,7 +1,7 @@
 using Cherry.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cherry.ManufacturingHub.Data;
+namespace Cherry.Client.Data;
 
 internal class ClientSideDbContext : DbContext
 {

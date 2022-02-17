@@ -21,7 +21,7 @@ async function onInstall(event) {
         .map(asset => new Request(asset.url, { integrity: asset.hash, cache: 'no-cache' }));
 
     // Also cache authentication configuration
-    assetsRequests.push(new Request('https://localhost:7087/_configuration/Cherry.ManufacturingHub'));
+    assetsRequests.push(new Request('https://localhost:7087/_configuration/Cherry.Client'));
 
     await caches.open(cacheName).then(cache => cache.addAll(assetsRequests));
 }

@@ -4,7 +4,7 @@ using Microsoft.JSInterop;
 using System.Security.Claims;
 using System.Text.Json;
 
-namespace Cherry.ManufacturingHub.Data;
+namespace Cherry.Client.Data;
 
 public class OfflineAccountClaimsPrincipalFactory : AccountClaimsPrincipalFactory<RemoteUserAccount>
 {
@@ -26,7 +26,7 @@ public class OfflineAccountClaimsPrincipalFactory : AccountClaimsPrincipalFactor
         else if (await js.InvokeAsync<string?>("localStorage.getItem", OfflineClaimsKey) is string cachedClaimsJson)
         {
             var cachedClaims = JsonSerializer.Deserialize<ClaimData[]>(cachedClaimsJson)!;
-            result = new ClaimsPrincipal(new ClaimsIdentity(cachedClaims.Select(c => new Claim(c.Type!, c.Value!)), "Cherry.ManufacturingHub", nameType: "name", roleType: "role"));
+            result = new ClaimsPrincipal(new ClaimsIdentity(cachedClaims.Select(c => new Claim(c.Type!, c.Value!)), "Cherry.Client", nameType: "name", roleType: "role"));
         }
 
         return result;

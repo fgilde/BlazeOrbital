@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.JSInterop;
 using System.Runtime.InteropServices;
 
-namespace Cherry.ManufacturingHub.Data;
+namespace Cherry.Client.Data;
 
 // This service synchronizes the Sqlite DB with both the backend server and the browser's IndexedDb storage
 class DataSynchronizer

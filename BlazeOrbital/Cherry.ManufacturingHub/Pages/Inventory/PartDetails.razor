@@ -1,4 +1,5 @@
-﻿@if (Part is not null)
+﻿@using Product = Cherry.Data.Product
+@if (Part is not null)
 {
     <div class="darken-bg inset-0 z-10 fixed top-0 flex justify-center items-center" @onclick="OnHide">
         <div tabindex="0" @ref="overlayElement" class="overlay bg-gray-200 relative shadow-lg" @onclick:stopPropagation>

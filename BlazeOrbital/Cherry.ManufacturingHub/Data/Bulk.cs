@@ -2,7 +2,7 @@
 using System.Data.Common;
 using System.Reflection;
 
-namespace Cherry.ManufacturingHub.Data;
+namespace Cherry.Client.Data;
 
 public class Bulk<T>
 {
