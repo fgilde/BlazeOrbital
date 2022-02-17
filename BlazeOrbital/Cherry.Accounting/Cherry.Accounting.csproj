@@ -26,6 +26,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cherry.ManufacturingHub\Cherry.Client.csproj" />
+    <ProjectReference Include="..\Cherry.Client\Cherry.Client.csproj" />
   </ItemGroup>
 </Project>

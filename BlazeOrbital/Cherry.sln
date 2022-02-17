@@ -4,7 +4,7 @@ VisualStudioVersion = 17.0.31803.31
 MinimumVisualStudioVersion = 16.0.0.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cherry.CentralServer", "CentralServer\Cherry.CentralServer.csproj", "{44B861FA-3FB7-44C7-937F-4EAB47BEE786}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cherry.Client", "Cherry.ManufacturingHub\Cherry.Client.csproj", "{A4099412-CD89-4BAD-B7BE-289BE4A8A35A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cherry.Client", "Cherry.Client\Cherry.Client.csproj", "{A4099412-CD89-4BAD-B7BE-289BE4A8A35A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cherry.Accounting", "Cherry.Accounting\Cherry.Accounting.csproj", "{F13CEFA0-49A6-48DC-AB0F-8FD8462862E7}"
 EndProject
