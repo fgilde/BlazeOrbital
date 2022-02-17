@@ -106,7 +106,7 @@
         }
         if (minStock > 0)
         {
-            result = result.Where(x => Convert.ToDecimal(x.SalePrice, NumberFormatInfo.CurrentInfo) >= minStock);
+            result = result.Where(x =>  Convert.ToDecimal(x.SalePrice, NumberFormatInfo.CurrentInfo) >= minStock);
         }
         if (maxStock < 50000)
         {
