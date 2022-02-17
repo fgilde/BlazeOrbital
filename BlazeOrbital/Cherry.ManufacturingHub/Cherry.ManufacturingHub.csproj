@@ -22,7 +22,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <Protobuf Include="..\CentralServer\Manufacturing.proto" GrpcServices="Client" />
+    <Protobuf Include="..\CentralServer\Cherry.proto" GrpcServices="Client" />
     <!-- EF Core and Sqlite -->
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.0-rc.1.21452.10" />
     <NativeFileReference Include="Data\e_sqlite3.o" />

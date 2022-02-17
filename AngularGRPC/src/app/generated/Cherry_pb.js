@@ -1,4 +1,4 @@
-// source: Manufacturing.proto
+// source: Cherry.proto
 /**
  * @fileoverview
  * @enhanceable

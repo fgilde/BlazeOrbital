@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 namespace Cherry.Data;
 
 //[Authorize]
-public class ManufacturingDataService : ManufacturingData.ManufacturingDataBase
+public class CherryDataService : CherryData.CherryDataBase
 {
     private readonly ApplicationDbContext db;
 
-    public ManufacturingDataService(ApplicationDbContext db)
+    public CherryDataService(ApplicationDbContext db)
     {
         this.db = db;
     }

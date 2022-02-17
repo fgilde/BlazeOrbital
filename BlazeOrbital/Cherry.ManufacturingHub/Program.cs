@@ -18,7 +18,7 @@ builder.Services
     .AddHttpMessageHandler<AuthorizationMessageHandler>();
 
 // gRPC-Web client with auth
-builder.Services.AddManufacturingDataClient((services, options) =>
+builder.Services.AddDataClient((services, options) =>
 {
     var authEnabledHandler = services.GetRequiredService<AuthorizationMessageHandler>();
     authEnabledHandler.ConfigureHandler(new[] { backendOrigin });
@@ -36,7 +36,7 @@ builder.Services.AddApiAuthorization(c => c.ProviderOptions.ConfigurationEndpoin
 builder.Services.AddScoped<AccountClaimsPrincipalFactory<RemoteUserAccount>, OfflineAccountClaimsPrincipalFactory>();
 
 // Sets up EF Core with Sqlite
-builder.Services.AddManufacturingDataDbContext();
+builder.Services.AddDataDbContext();
 
 // Declare a custom element for the Mission Control app
 builder.RootComponents.RegisterAsCustomElement<Inventory>("inventory-grid");

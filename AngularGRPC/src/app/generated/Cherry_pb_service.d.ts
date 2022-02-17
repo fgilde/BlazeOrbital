@@ -1,31 +1,31 @@
 // package: 
-// file: Manufacturing.proto
+// file: Cherry.proto
 
-import * as Manufacturing_pb from "./Manufacturing_pb";
+import * as Cherry_pb from "./Cherry_pb";
 import {grpc} from "@improbable-eng/grpc-web";
 
-type ManufacturingDataGetDashboardData = {
+type CherryDataGetDashboardData = {
   readonly methodName: string;
-  readonly service: typeof ManufacturingData;
+  readonly service: typeof CherryData;
   readonly requestStream: false;
   readonly responseStream: false;
-  readonly requestType: typeof Manufacturing_pb.DashboardRequest;
-  readonly responseType: typeof Manufacturing_pb.DashboardReply;
+  readonly requestType: typeof Cherry_pb.DashboardRequest;
+  readonly responseType: typeof Cherry_pb.DashboardReply;
 };
 
-type ManufacturingDataGetProducts = {
+type CherryDataGetProducts = {
   readonly methodName: string;
-  readonly service: typeof ManufacturingData;
+  readonly service: typeof CherryData;
   readonly requestStream: false;
   readonly responseStream: false;
-  readonly requestType: typeof Manufacturing_pb.ProductsRequest;
-  readonly responseType: typeof Manufacturing_pb.ProductsReply;
+  readonly requestType: typeof Cherry_pb.ProductsRequest;
+  readonly responseType: typeof Cherry_pb.ProductsReply;
 };
 
-export class ManufacturingData {
+export class CherryData {
   static readonly serviceName: string;
-  static readonly GetDashboardData: ManufacturingDataGetDashboardData;
-  static readonly GetProducts: ManufacturingDataGetProducts;
+  static readonly GetDashboardData: CherryDataGetDashboardData;
+  static readonly GetProducts: CherryDataGetProducts;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -56,27 +56,27 @@ interface BidirectionalStream<ReqT, ResT> {
   on(type: 'status', handler: (status: Status) => void): BidirectionalStream<ReqT, ResT>;
 }
 
-export class ManufacturingDataClient {
+export class CherryDataClient {
   readonly serviceHost: string;
 
   constructor(serviceHost: string, options?: grpc.RpcOptions);
   getDashboardData(
-    requestMessage: Manufacturing_pb.DashboardRequest,
+    requestMessage: Cherry_pb.DashboardRequest,
     metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: Manufacturing_pb.DashboardReply|null) => void
+    callback: (error: ServiceError|null, responseMessage: Cherry_pb.DashboardReply|null) => void
   ): UnaryResponse;
   getDashboardData(
-    requestMessage: Manufacturing_pb.DashboardRequest,
-    callback: (error: ServiceError|null, responseMessage: Manufacturing_pb.DashboardReply|null) => void
+    requestMessage: Cherry_pb.DashboardRequest,
+    callback: (error: ServiceError|null, responseMessage: Cherry_pb.DashboardReply|null) => void
   ): UnaryResponse;
   getProducts(
-    requestMessage: Manufacturing_pb.ProductsRequest,
+    requestMessage: Cherry_pb.ProductsRequest,
     metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: Manufacturing_pb.ProductsReply|null) => void
+    callback: (error: ServiceError|null, responseMessage: Cherry_pb.ProductsReply|null) => void
   ): UnaryResponse;
   getProducts(
-    requestMessage: Manufacturing_pb.ProductsRequest,
-    callback: (error: ServiceError|null, responseMessage: Manufacturing_pb.ProductsReply|null) => void
+    requestMessage: Cherry_pb.ProductsRequest,
+    callback: (error: ServiceError|null, responseMessage: Cherry_pb.ProductsReply|null) => void
   ): UnaryResponse;
 }
 

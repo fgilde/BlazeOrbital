@@ -56,7 +56,7 @@ app.UseGrpcWeb();
 app.UseIdentityServer();
 app.UseAuthentication();
 app.UseAuthorization();
-app.MapGrpcService<ManufacturingDataService>().EnableGrpcWeb();
+app.MapGrpcService<CherryDataService>().EnableGrpcWeb();
 app.MapRazorPages();
 app.MapControllers();
 

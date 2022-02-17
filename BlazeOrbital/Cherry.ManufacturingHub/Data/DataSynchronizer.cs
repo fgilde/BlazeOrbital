@@ -11,13 +11,13 @@ class DataSynchronizer
     public const string SqliteDbFilename = "app.db";
     private readonly Task firstTimeSetupTask;
     private readonly IDbContextFactory<ClientSideDbContext> dbContextFactory;
-    private readonly ManufacturingData.ManufacturingDataClient manufacturingData;
+    private readonly CherryData.CherryDataClient cherryDataClient;
     private bool isSynchronizing;
 
-    public DataSynchronizer(IJSRuntime js, IDbContextFactory<ClientSideDbContext> dbContextFactory, ManufacturingData.ManufacturingDataClient manufacturingData)
+    public DataSynchronizer(IJSRuntime js, IDbContextFactory<ClientSideDbContext> dbContextFactory, CherryData.CherryDataClient cherryDataClient)
     {
         this.dbContextFactory = dbContextFactory;
-        this.manufacturingData = manufacturingData;
+        this.cherryDataClient = cherryDataClient;
         firstTimeSetupTask = FirstTimeSetupAsync(js);
     }
 
@@ -78,7 +78,7 @@ class DataSynchronizer
             while (true)
             {
                 var request = new ProductsRequest { MaxCount = 5000, ModifiedSince = mostRecentUpdate ?? -1 };
-                var response = await manufacturingData.GetProductsAsync(request);
+                var response = await cherryDataClient.GetProductsAsync(request);
                 var syncRemaining = response.ModifiedCount - response.Products.Count;
 
                 SyncCompleted += response.Products.Count;

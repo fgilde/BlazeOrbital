@@ -1,7 +1,7 @@
 ﻿syntax = "proto3"; 
 option csharp_namespace = "Cherry.Data";
 
-service ManufacturingData { 
+service CherryData { 
 	rpc GetDashboardData (DashboardRequest) returns (DashboardReply);
 	rpc GetProducts (ProductsRequest) returns (ProductsReply); 
 }

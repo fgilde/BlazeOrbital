@@ -1,45 +1,45 @@
 // package: 
-// file: Manufacturing.proto
+// file: Cherry.proto
 
-var Manufacturing_pb = require("./Manufacturing_pb");
+var Cherry_pb = require("./Cherry_pb");
 var grpc = require("@improbable-eng/grpc-web").grpc;
 
-var ManufacturingData = (function () {
-  function ManufacturingData() {}
-  ManufacturingData.serviceName = "ManufacturingData";
-  return ManufacturingData;
+var CherryData = (function () {
+  function CherryData() {}
+  CherryData.serviceName = "CherryData";
+  return CherryData;
 }());
 
-ManufacturingData.GetDashboardData = {
+CherryData.GetDashboardData = {
   methodName: "GetDashboardData",
-  service: ManufacturingData,
+  service: CherryData,
   requestStream: false,
   responseStream: false,
-  requestType: Manufacturing_pb.DashboardRequest,
-  responseType: Manufacturing_pb.DashboardReply
+  requestType: Cherry_pb.DashboardRequest,
+  responseType: Cherry_pb.DashboardReply
 };
 
-ManufacturingData.GetProducts = {
+CherryData.GetProducts = {
   methodName: "GetProducts",
-  service: ManufacturingData,
+  service: CherryData,
   requestStream: false,
   responseStream: false,
-  requestType: Manufacturing_pb.ProductsRequest,
-  responseType: Manufacturing_pb.ProductsReply
+  requestType: Cherry_pb.ProductsRequest,
+  responseType: Cherry_pb.ProductsReply
 };
 
-exports.ManufacturingData = ManufacturingData;
+exports.CherryData = CherryData;
 
-function ManufacturingDataClient(serviceHost, options) {
+function CherryDataClient(serviceHost, options) {
   this.serviceHost = serviceHost;
   this.options = options || {};
 }
 
-ManufacturingDataClient.prototype.getDashboardData = function getDashboardData(requestMessage, metadata, callback) {
+CherryDataClient.prototype.getDashboardData = function getDashboardData(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(ManufacturingData.GetDashboardData, {
+  var client = grpc.unary(CherryData.GetDashboardData, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -66,11 +66,11 @@ ManufacturingDataClient.prototype.getDashboardData = function getDashboardData(r
   };
 };
 
-ManufacturingDataClient.prototype.getProducts = function getProducts(requestMessage, metadata, callback) {
+CherryDataClient.prototype.getProducts = function getProducts(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(ManufacturingData.GetProducts, {
+  var client = grpc.unary(CherryData.GetProducts, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -97,5 +97,5 @@ ManufacturingDataClient.prototype.getProducts = function getProducts(requestMess
   };
 };
 
-exports.ManufacturingDataClient = ManufacturingDataClient;
+exports.CherryDataClient = CherryDataClient;
 

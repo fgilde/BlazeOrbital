@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {grpc} from "@improbable-eng/grpc-web";
-import {ManufacturingData} from "./generated/Manufacturing_pb_service";
-import {ProductsRequest, ProductsReply, Product} from "./generated/Manufacturing_pb";
+import {CherryData} from "./generated/Cherry_pb_service";
+import {ProductsRequest, ProductsReply, Product} from "./generated/Cherry_pb";
 import { ProductModel } from './models/productModel';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     request.setModifiedsince(-1);
 
 
-    grpc.unary(ManufacturingData.GetProducts, {
+    grpc.unary(CherryData.GetProducts, {
       request: request,
       host: "https://localhost:7087",
       onEnd: res => {
@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
     });
     
 
-    // grpc.invoke(ManufacturingData.GetProducts, {
+    // grpc.invoke(CherryData.GetProducts, {
     //   request: request,
     //   host: "https://localhost:7087",
     //   onMessage: (message: ProductsReply) => {

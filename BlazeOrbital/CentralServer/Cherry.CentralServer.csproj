@@ -20,7 +20,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
     <PackageReference Include="Grpc.AspNetCore.Web" Version="2.40.0" />
-    <Protobuf Include="Manufacturing.proto" GrpcServices="Server" />
+    <Protobuf Include="Cherry.proto" GrpcServices="Server" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />

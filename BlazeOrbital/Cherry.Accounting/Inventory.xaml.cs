@@ -17,14 +17,14 @@ namespace Cherry.Accounting
         {
             var services = new ServiceCollection();
             services.AddBlazorWebView();
-            services.AddManufacturingDataClient((services, options) =>
+            services.AddDataClient((services, options) =>
             {
                 options.BaseUri = WpfAppAccessTokenProvider.Instance.BackendUrl;
                 options.MessageHandler = WpfAppAccessTokenProvider.Instance.CreateMessageHandler(services);
             });
 
             // Sets up EF Core with Sqlite
-            services.AddManufacturingDataDbContext();
+            services.AddDataDbContext();
 
             Resources.Add("services", services.BuildServiceProvider());
 

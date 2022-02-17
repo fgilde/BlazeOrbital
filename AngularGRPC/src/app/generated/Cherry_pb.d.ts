@@ -1,5 +1,5 @@
 // package: 
-// file: Manufacturing.proto
+// file: Cherry.proto
 
 import * as jspb from "google-protobuf";
 

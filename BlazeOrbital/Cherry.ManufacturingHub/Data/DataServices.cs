@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cherry.ManufacturingHub.Data;
 
-public static class ManufacturingDataServices
+public static class DataServices
 {
-    public static void AddManufacturingDataClient(this IServiceCollection serviceCollection, Action<IServiceProvider, ManufacturingDataClientOptions> configure)
+    public static void AddDataClient(this IServiceCollection serviceCollection, Action<IServiceProvider, ManufacturingDataClientOptions> configure)
     {
         serviceCollection.AddScoped(services =>
         {
@@ -14,11 +14,11 @@ public static class ManufacturingDataServices
             configure(services, options);
             var httpClient = new HttpClient(new GrpcWebHandler(GrpcWebMode.GrpcWeb, options.MessageHandler!));
             var channel = GrpcChannel.ForAddress(options.BaseUri!, new GrpcChannelOptions { HttpClient = httpClient, MaxReceiveMessageSize = null });
-            return new Cherry.Data.ManufacturingData.ManufacturingDataClient(channel);
+            return new Cherry.Data.CherryData.CherryDataClient(channel);
         });
     }
 
-    public static void AddManufacturingDataDbContext(this IServiceCollection serviceCollection)
+    public static void AddDataDbContext(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddDbContextFactory<ClientSideDbContext>(
             options => options.UseSqlite($"Filename={DataSynchronizer.SqliteDbFilename}"));

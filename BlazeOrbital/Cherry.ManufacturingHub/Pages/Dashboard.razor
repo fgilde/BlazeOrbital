@@ -1,6 +1,6 @@
 ﻿@page "/"
 @using Cherry.Data
-@inject ManufacturingData.ManufacturingDataClient ManufacturingData
+@inject CherryData.CherryDataClient cherryDataClient
 @attribute [Authorize]
 
 <div class="page">
@@ -127,7 +127,7 @@
     {
         try
         {
-            dashboardData = await ManufacturingData.GetDashboardDataAsync(new DashboardRequest());
+            dashboardData = await cherryDataClient.GetDashboardDataAsync(new DashboardRequest());
         }
         catch (Exception ex)
         {
