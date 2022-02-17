@@ -1,8 +1,9 @@
 using System.Globalization;
 using Cherry.CentralServer.Data;
+using Cherry.Data;
 using CsvHelper;
 
-namespace Cherry.Data.Services;
+namespace Cherry.CentralServer.Services;
 
 public class FeedSyncService : BackgroundService
 {

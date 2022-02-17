@@ -2,8 +2,8 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Cherry.CentralServer.Data;
+using Cherry.CentralServer.Services;
 using Cherry.Data;
-using Cherry.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
