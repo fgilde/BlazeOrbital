@@ -28,6 +28,69 @@
     padding: 0.5rem;
 }
 
+/* Additional for Block style */
+.blocky ::deep table > tbody > tr > td {
+    display: block;
+    width: 100% !important;
+    padding: 3px 12px;
+}
+
+.blocky ::deep table > tbody > tr {
+    float: left;
+    /*height: 600px;*/
+    height: 400px;
+    width: 350px;
+}
+
+    .blocky ::deep table > tbody > tr > td > div {
+        width: 100%;
+        height: auto !important;
+    }
+
+    /*.blocky ::deep table > tbody > tr > td.col-image img {
+        width: 100%;
+        border: 2px solid gray;
+        border-radius: 6px;
+    }*/
+
+    .blocky ::deep table > tbody > tr > td.col-category {
+        font-weight: bold;
+        font-size: 26px;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .blocky ::deep table > tbody > tr > td.col-name {
+        color: #616161;
+        font-size: 14px;
+        white-space: normal;
+    }
+
+    .blocky ::deep table > tbody > tr > td.col-location {
+        color: #af0000;
+        font-style: italic;
+        font-weight: 600;
+        font-size: 12px;
+    }
+
+.blocky ::deep table > thead,
+.blocky ::deep table > tbody > div {
+    display: block;
+    margin-left: -18px;
+    width: 100%;
+    margin-top: -18px;
+    padding-bottom: 20px;
+    background-color: white;
+}
+
+.blocky ::deep table {
+    margin: 20px;
+    background: none !important;
+}
+
+/* End Additional for Block style */
+
+
 ::deep .col-cost, ::deep .col-stock {
     width: max(10vw, 6rem);
 }
@@ -52,16 +115,20 @@
 
 ::deep thead {
     top: 4rem;
-    box-shadow: 0 1px 3px rgb(0 0 0 / 30%);
+    /*box-shadow: 0 1px 3px rgb(0 0 0 / 30%);*/
 }
 
-::deep table {
-    border-collapse: collapse;
-    background: repeating-linear-gradient(#f5f5f5, #f5f5f5 35px, #fff 35px, #fff 70px);
+::deep tr:nth-child(even) {
+    background: #fbfbfb
 }
+
+::deep tr:nth-child(odd) {
+    background: #FFF
+}
+
 
 ::deep .column-title-flex {
-    background-color: #eee;
+    background-color: white;
 }
 
 ::deep .column-title {
@@ -87,10 +154,6 @@
     width: 100px;
 }
 
-::deep tbody .col-name:hover {
-    color: #08F;
-    background-color: rgba(0,0,0,0.05);
-}
 
 ::deep tbody .col-name button {
     width: 100%;
@@ -98,9 +161,30 @@
     cursor: pointer;
 }
 
-::deep input[type=search] {
-    width: 10rem;
+.search-input {
+    width: 95%;
     border: 1px solid rgb(209,213,219);
     border-radius: 9999px;
     padding: 0.5rem 1.25rem;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.search-container {
+    margin: 10px;
+    text-align: center;
+    position: sticky;
+    width: 100%;
+    top: 75px;
+    height: 42px;
+}
+
+.mode-button {
+    vertical-align: middle;
+}
+
+.mode-svg {
+    margin: -5px 0px 0px 6px;
 }

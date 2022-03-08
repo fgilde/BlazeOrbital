@@ -4,6 +4,7 @@ option csharp_namespace = "Cherry.Data";
 service CherryData { 
 	rpc GetDashboardData (DashboardRequest) returns (DashboardReply);
 	rpc GetProducts (ProductsRequest) returns (ProductsReply); 
+	rpc GetProduct (ProductRequest) returns (Product); 
 }
 
 message DashboardRequest {}
@@ -14,6 +15,10 @@ message DashboardReply {
 	int64 factoryUptimeMs = 4;
 	int32 servicingTasksDue = 5;
 	int32 machinesStopped = 6;
+}
+
+message ProductRequest {
+	string id = 1;	
 }
 
 message ProductsRequest {

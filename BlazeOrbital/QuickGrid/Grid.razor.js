@@ -2,14 +2,15 @@ export function init(elem) {
     enableColumnResizing(elem);
 
     const bodyClickHandler = event => {
-        const columnOptionsElement = elem.querySelector('thead .column-options');
-        if (columnOptionsElement && event.path.indexOf(columnOptionsElement) < 0) {
+        const path = event.path || (event.composedPath && event.composedPath());
+        const columnOptionsElement = elem ? elem.querySelector('thead .column-options') : null;
+        if (elem && columnOptionsElement && path.indexOf(columnOptionsElement) < 0) {
             elem.dispatchEvent(new CustomEvent('closecolumnoptions', { bubbles: true }));
         }
     };
     const keyDownHandler = event => {
-        const columnOptionsElement = elem.querySelector('thead .column-options');
-        if (columnOptionsElement && event.key === "Escape") {
+        const columnOptionsElement = elem ? elem.querySelector('thead .column-options') : null;
+        if (elem && columnOptionsElement && event.key === "Escape") {
             elem.dispatchEvent(new CustomEvent('closecolumnoptions', { bubbles: true }));
         }
     };
@@ -28,14 +29,15 @@ export function init(elem) {
 }
 
 export function checkColumnOptionsPosition(elem) {
-    const colOptions = elem.querySelector('.column-options');
-    if (colOptions && colOptions.offsetLeft < 0) {
+    const colOptions = elem ? elem.querySelector('.column-options') : null;
+    if (elem && colOptions && colOptions.offsetLeft < 0) {
         colOptions.style.transform = `translateX(${ -1 * colOptions.offsetLeft }px)`;
     }
 }
 
 function enableColumnResizing(elem) {
-    elem.querySelectorAll('thead .column-width-draghandle').forEach(handle => {
+    const elements = elem ? elem.querySelectorAll('thead .column-width-draghandle') || [] : [];
+    elements.forEach(handle => {
         const th = handle.parentNode;
         handle.addEventListener('mousedown', evt => {
             evt.preventDefault();

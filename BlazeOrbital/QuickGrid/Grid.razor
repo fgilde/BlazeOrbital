@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Components.Rendering
 @using System.Linq.Expressions
+@using QuickGrid.Extensions
 @typeparam TGridItem
 @attribute [CascadingTypeParameter(nameof(TGridItem))]
 @inject IJSRuntime JS
@@ -43,6 +44,8 @@
     [Parameter] public bool ResizableColumns { get; set; }
     [Parameter] public float ItemSize { get; set; } = 50;
     [Parameter] public Func<TGridItem, object> ItemKey { get; set; } = x => x;
+    [Parameter] public EventCallback<TGridItem> OnItemClick { get; set; }
+    [Parameter] public Func<TGridItem, string> ItemHrefFn { get; set; } = _ => string.Empty;
 
     private Virtualize<(int, TGridItem)>? _virtualizeComponent;
     private List<ColumnBase<TGridItem>> _columns;
@@ -106,12 +109,19 @@
 
     private void RenderRow(RenderTreeBuilder __builder, int rowIndex, TGridItem item)
     {
-        <tr @key="@(ItemKey(item))" aria-rowindex="@rowIndex">
+        string href = ItemHrefFn(item);
+        string style = OnItemClick.HasDelegate || !string.IsNullOrWhiteSpace(href) ? "cursor: pointer;" : "";
+        __builder.OpenAnchorIf(href);
+
+        <tr style="@style" @onclick="() => InvokeOnItemClick(item)" @key="@(ItemKey(item))" aria-rowindex="@rowIndex">
             @foreach (var col in _columns)
             {
+                __builder.OpenAnchorIf(col.Href);
                 <td class="@ColumnClass(col)" @key="@col">@col.CellContent(item)</td>
+                __builder.CloseAnchorIf(col.Href);
             }
         </tr>
+        __builder.CloseAnchorIf(href);
     }
 
     private void RenderColumnHeaders(RenderTreeBuilder builder)
@@ -254,4 +264,11 @@
     {
         _displayOptionsForColumn = null;
     }
+
+    private async void InvokeOnItemClick(TGridItem item)
+    {
+        await OnItemClick.InvokeAsync(item);
+    }
 }
+
+

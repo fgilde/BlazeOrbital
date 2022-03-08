@@ -28,6 +28,11 @@ public class CherryDataService : CherryData.CherryDataBase
         });
     }
 
+    public override async Task<Product?> GetProduct(ProductRequest request, ServerCallContext context)
+    {
+        return await db.Products.FindAsync(request.Id);
+    }
+
     public override async Task<ProductsReply> GetProducts(ProductsRequest request, ServerCallContext context)
     {
         var modifiedParts = db.Products

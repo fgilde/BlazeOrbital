@@ -13,6 +13,7 @@ public abstract class ColumnBase<TGridItem> : ComponentBase
     [Parameter] public string? Class { get; set; }
     [Parameter] public Align Align { get; set; }
     [Parameter] public RenderFragment? ColumnOptions { get; set; }
+    [Parameter] public string Href { get; set; }
 
     internal RenderFragment HeaderContent { get; }
 

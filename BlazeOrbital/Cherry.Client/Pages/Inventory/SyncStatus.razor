@@ -4,13 +4,22 @@
 
 @if (DataSynchronizer.SyncCompleted < DataSynchronizer.SyncTotal)
 {
-    <div class="bg-gray-500 fixed text-white text-center z-10 left-0 right-0 bottom-5 w-96 m-auto p-5 rounded-xl" style="height: min-content; box-shadow: 0 4px 8px rgb(0 0 0 / 50%);">
-        <div>Getting updated data...</div>
-        <div class="bg-gray-100 h-4 my-5 rounded-full p-1">
+    @if (SimpleMode)
+    {
+        <div class="w-full fixed bottom-5 z-10 bg-gray-100 h-4 p-1" style="margin-bottom: 20px;">
             <div class="bg-green-400 h-full rounded-full" style="width: @(100 * DataSynchronizer.SyncCompleted / DataSynchronizer.SyncTotal)%"></div>
         </div>
-        <div>@DataSynchronizer.SyncCompleted.ToString("N0") / @DataSynchronizer.SyncTotal.ToString("N0")</div>
-    </div>
+    }
+    else
+    {
+        <div class="bg-gray-500 fixed text-white text-center z-10 left-0 right-0 bottom-5 w-96 m-auto p-5 rounded-xl" style="height: min-content; box-shadow: 0 4px 8px rgb(0 0 0 / 50%);">
+            <div>@StatusText...</div>
+            <div class="bg-gray-100 h-4 my-5 rounded-full p-1">
+                <div class="bg-green-400 h-full rounded-full" style="width: @(100 * DataSynchronizer.SyncCompleted / DataSynchronizer.SyncTotal)%"></div>
+            </div>
+            <div>@DataSynchronizer.SyncCompleted.ToString("N0") / @DataSynchronizer.SyncTotal.ToString("N0")</div>
+        </div>
+    }
 }
 
 @if (syncException is not null)
@@ -22,6 +31,13 @@
 }
 
 @code {
+
+    [Parameter]
+    public bool SimpleMode { get; set; } = true;
+
+    [Parameter]
+    public string StatusText { get; set; } = "Getting updated data";
+
     Exception? syncException;
 
     protected override void OnInitialized()
