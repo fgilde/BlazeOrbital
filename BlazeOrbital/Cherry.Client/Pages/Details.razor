@@ -29,8 +29,9 @@ else
         SelectedProduct ??= App.Instance.SelectedProduct;
         if (SelectedProduct == null)
         {
-            var db = await DataSynchronizer.GetPreparedDbContextAsync();
-            SelectedProduct = await db.FindAsync<Product>(Id) ?? await cherryDataClient.GetProductAsync(new ProductRequest {Id = Id});
+            //var db = await DataSynchronizer.GetPreparedDbContextAsync();
+            //SelectedProduct = await db.FindAsync<Product>(Id) ?? await cherryDataClient.GetProductAsync(new ProductRequest {Id = Id});
+            SelectedProduct = await cherryDataClient.GetProductAsync(new ProductRequest {Id = Id});
         }
     }
 }

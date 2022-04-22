@@ -19,7 +19,7 @@ public partial class Inventory: IDisposable
         set
         {
             _search = value;
-            navigationManager.NavigateTo(!string.IsNullOrWhiteSpace(_search) ? $"search/{_search}" : "/", false);
+            Task.Delay(300).ContinueWith(t => navigationManager.NavigateTo(!string.IsNullOrWhiteSpace(_search) ? $"search/{_search}" : "/", false, true));
         }
     }
     [Inject] private DataSynchronizer DataSynchronizer { get; set; }
@@ -48,9 +48,9 @@ public partial class Inventory: IDisposable
         {
             result = result.Where(x => subcategories.Contains(x.Subcategory));
         }
-        if (!string.IsNullOrEmpty(SearchName))
+        if (!string.IsNullOrWhiteSpace(_search))
         {
-            result = result.Where(x => EF.Functions.Like(x.Name, SearchName.Replace("%", "\\%") + "%", "\\"));
+            result = result.Where(x => EF.Functions.Like(x.Name, _search.Replace("%", "\\%") + "%", "\\"));
         }
         if (minStock > 0)
         {

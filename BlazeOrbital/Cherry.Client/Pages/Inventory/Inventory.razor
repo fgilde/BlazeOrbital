@@ -1,5 +1,5 @@
 ﻿@page "/"
-@page "/search/{SearchName?}"
+@page "/search/{SearchName}"
 @using System.Linq
 
 <PageTitle>Inventory</PageTitle>
@@ -18,7 +18,7 @@
     </div>
 
     <div class="inventory-grid @(blocked ? "blocky": "")">
-        <Grid Virtualize="true" ResizableColumns="@(!blocked)" TGridItem="Product" OnItemClick="@OnItemClick" Items="@GetFilteredParts()" ItemKey="@(x => x.Id)" ItemSize="1000">
+        <Grid Virtualize="true" ResizableColumns="@(!blocked)" TGridItem="Product" OnItemClick="@OnItemClick" Items="@GetFilteredParts()" ItemKey="@(x => x.Id)" ItemSize="210">
 
             <TemplateColumn Class="col-image">
                 <ChildContent>
